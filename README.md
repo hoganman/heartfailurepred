@@ -22,3 +22,14 @@ and the variance of the prediction could be high. Using bagging should help.
 Using scikit-learn, I define a ```BaggingClassifier``` with the defaults. The advantage of BARF over BDT is that
 with the bootstrapping enabled, we can reduce the effects of high variance from non-bagging
 methods.
+
+# Results
+
+What I observe in the prediction data is that the ANN does really well compared to the bagged and adaBoosted methods.
+Percentages are rounded to the nearest integer with floor (ceil) on values less (greater) than 0.5.
+
+| Model        | Accuracy (%) | Sensitivity (%) | Specificity (%) | F1 Score | 
+|--------------|--------------|-----------------|-----------------|----------|
+| ANN          | 84           | 93              | 74              | 85       |
+| BARF         | 82           | 92              | 68              | 85       |
+| BDT          | 83           | 94              | 69              | 87       |
