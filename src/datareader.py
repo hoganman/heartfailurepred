@@ -20,7 +20,7 @@ def get_csv_features_labels(filename: str) -> Tuple[np.ndarray, ...]:
     dataframe['ChestPainType'] = dataframe['ChestPainType'].map(enums.ChestPainTypes().data)
     dataframe['RestingECG'] = dataframe['RestingECG'].map(enums.RestingECGTypes().data)
     dataframe['ExerciseAngina'] = dataframe['ExerciseAngina'].map(enums.ExerciseAnginaTypes().data)
-    dataframe['ST_Slope'] = dataframe['ST_Slope'].map(enums.STSlopeTypes.data)
+    dataframe['ST_Slope'] = dataframe['ST_Slope'].map(enums.STSlopeTypes().data)
     for key_name in ['Age', 'RestingBP', 'Cholesterol', 'FastingBS', 'MaxHR', 'Oldpeak', 'HeartDisease']:
         dataframe[key_name] = dataframe[key_name].map(float)
     labels = np.array(dataframe.pop('HeartDisease'))
