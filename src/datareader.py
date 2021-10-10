@@ -10,12 +10,13 @@ def get_csv_features_labels(filename: str) -> Tuple[np.ndarray, ...]:
     """Get the features and labels from a CSV file
 
     :param filename: The path to a input file
-    :return: features, labels
+    :return: keys, features, labels
     """
     if not os.path.isfile(filename):
         raise OSError(f'File {filename} does not exist')
     dataframe: pd.DataFrame
     dataframe = pd.read_csv(filename)
+    keys = np.array(dataframe.keys())
     dataframe['Sex'] = dataframe['Sex'].map(enums.SexTypes().data)
     dataframe['ChestPainType'] = dataframe['ChestPainType'].map(enums.ChestPainTypes().data)
     dataframe['RestingECG'] = dataframe['RestingECG'].map(enums.RestingECGTypes().data)
@@ -25,4 +26,4 @@ def get_csv_features_labels(filename: str) -> Tuple[np.ndarray, ...]:
         dataframe[key_name] = dataframe[key_name].map(float)
     labels = np.array(dataframe.pop('HeartDisease'))
     features = np.array(dataframe)
-    return features, labels
+    return keys, features, labels
