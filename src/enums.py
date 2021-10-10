@@ -1,29 +1,31 @@
 from collections import UserDict
-from typing import Final
+from typing import Dict
 
 
-class SexTypes(UserDict[str, float]):
+class SexTypes(UserDict):
     """Male and Female sexes mapping from str -> float"""
-    M: Final[float] = -1.0  # Male
-    F: Final[float] = +1.0  # Female
+    M: float = -1.0  # Male
+    F: float = +1.0  # Female
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.data: Dict[str, float]
         self.data = {
             'M': self.M,
             'F': self.F
         }
 
 
-class ChestPainTypes(UserDict[str, float]):
+class ChestPainTypes(UserDict):
     """Chest pain classifications mapping from str -> float"""
-    TA: Final[float] = -1.0  # Typical Angina
-    ATA: Final[float] = -1./3  # Atypical Angina
-    NAP: Final[float] = 1./3  # Non - Anginal Pain
-    ASY: Final[float] = 1.0  # Asymptomatic
+    TA: float = -1.0  # Typical Angina
+    ATA: float = -1./3  # Atypical Angina
+    NAP: float = 1./3  # Non - Anginal Pain
+    ASY: float = 1.0  # Asymptomatic
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.data: Dict[str, float]
         self.data = {
             'TA': self.TA,
             'ATA': self.ATA,
@@ -34,12 +36,13 @@ class ChestPainTypes(UserDict[str, float]):
 
 class RestingECGTypes(UserDict):
     """Resting ECG classification mappings from str -> float"""
-    Normal: Final[float] = -1.0  # Normal
-    ST: Final[float] = 0.0  # Having ST-T wave abnormality
-    LVH: Final[float] = 1.0  # Showing probable or definite left ventricular hypertrophy by Estes' criteria
+    Normal: float = -1.0  # Normal
+    ST: float = 0.0  # Having ST-T wave abnormality
+    LVH: float = 1.0  # Showing probable or definite left ventricular hypertrophy by Estes' criteria
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.data: Dict[str, float]
         self.data = {
             'Normal': self.Normal,
             'ST': self.ST,
@@ -47,27 +50,29 @@ class RestingECGTypes(UserDict):
         }
 
 
-class ExerciseAnginaTypes(UserDict[str, float]):
-    """Exercise angina mapping from str -> float """
-    Y: Final[float] = 1.0
-    N: Final[float] = -1.0
+class ExerciseAnginaTypes(UserDict):
+    """Exercise angina mapping from str -> float"""
+    Y: float = 1.0
+    N: float = -1.0
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.data: Dict[str, float]
         self.data = {
             'Y': self.Y,
             'N': self.N
         }
 
 
-class STSlopeTypes(UserDict[str, float]):
+class STSlopeTypes(UserDict):
     """ST-wave slope type mapping from str -> float"""
-    Up: Final[float] = 1.0  # upsloping
-    Flat: Final[float] = 0.0  # flat
-    Down: Final[float] = -1.0  # downsloping
+    Up: float = 1.0  # upsloping
+    Flat: float = 0.0  # flat
+    Down: float = -1.0  # downsloping
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.data: Dict[str, float]
         self.data = {
             'Up': self.Up,
             'Flat': self.Flat,
@@ -75,14 +80,16 @@ class STSlopeTypes(UserDict[str, float]):
         }
 
 
-class HeartDiseaseClassification(UserDict[int, str]):
+class HeartDiseaseClassification(UserDict):
     """The output classification mapping from int -> str"""
-    Normal: Final[int] = 0
-    HeartDisease: Final[int] = 1
+    Normal: int = 0
+    HeartDisease: int = 1
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.data: Dict[str, int]
         self.data = {
             self.Normal: 'Normal',
             self.HeartDisease: 'Heart disease',
         }
+
