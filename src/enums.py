@@ -48,7 +48,7 @@ class RestingECGTypes(UserDict):
 
 
 class ExerciseAnginaTypes(UserDict[str, float]):
-    """Exercise angina mapping from str to float """
+    """Exercise angina mapping from str -> float """
     Y: Final[float] = 1.0
     N: Final[float] = -1.0
 
@@ -61,6 +61,7 @@ class ExerciseAnginaTypes(UserDict[str, float]):
 
 
 class STSlopeTypes(UserDict[str, float]):
+    """ST-wave slope type mapping from str -> float"""
     Up: Final[float] = 1.0  # upsloping
     Flat: Final[float] = 0.0  # flat
     Down: Final[float] = -1.0  # downsloping
@@ -75,6 +76,7 @@ class STSlopeTypes(UserDict[str, float]):
 
 
 class HeartDiseaseClassification(UserDict[int, str]):
+    """The output classification mapping from int -> str"""
     Normal: Final[int] = 0
     HeartDisease: Final[int] = 1
 
