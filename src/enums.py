@@ -3,9 +3,9 @@ from typing import Final
 
 
 class SexTypes(UserDict[str, float]):
-
-    M: Final[float] = 0.0
-    F: Final[float] = 1.0
+    """Male and Female sexes mapping from str -> float"""
+    M: Final[float] = -1.0  # Male
+    F: Final[float] = +1.0  # Female
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -16,10 +16,11 @@ class SexTypes(UserDict[str, float]):
 
 
 class ChestPainTypes(UserDict[str, float]):
-    TA: Final[float] = 0.0  # Typical Angina
-    ATA: Final[float] = 1.0  # Atypical Angina
-    NAP: Final[float] = 2.0  # Non - Anginal Pain
-    ASY: Final[float] = 3.0  # Asymptomatic
+    """Chest pain classifications mapping from str -> float"""
+    TA: Final[float] = -1.0  # Typical Angina
+    ATA: Final[float] = -1./3  # Atypical Angina
+    NAP: Final[float] = 1./3  # Non - Anginal Pain
+    ASY: Final[float] = 1.0  # Asymptomatic
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -32,9 +33,10 @@ class ChestPainTypes(UserDict[str, float]):
 
 
 class RestingECGTypes(UserDict):
-    Normal: Final[float] = 0.0  # Normal
-    ST: Final[float] = 1.0  # Having ST-T wave abnormality
-    LVH: Final[float] = 2.0  # Showing probable or definite left ventricular hypertrophy by Estes' criteria
+    """Resting ECG classification mappings from str -> float"""
+    Normal: Final[float] = -1.0  # Normal
+    ST: Final[float] = 0.0  # Having ST-T wave abnormality
+    LVH: Final[float] = 1.0  # Showing probable or definite left ventricular hypertrophy by Estes' criteria
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -46,9 +48,9 @@ class RestingECGTypes(UserDict):
 
 
 class ExerciseAnginaTypes(UserDict[str, float]):
-
+    """Exercise angina mapping from str to float """
     Y: Final[float] = 1.0
-    N: Final[float] = 0.0
+    N: Final[float] = -1.0
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
