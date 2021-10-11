@@ -11,17 +11,19 @@ and 1 (heart disease)
 
 ## Artificial Neural Network (ANN) Model
 Using TensorFlow version 2.4, I define a single, fully-connected ```tf.keras.layers.Dense``` hidden layer
-multi-layer perceptron (MLP). The number of nodes in the layer 2x times the number of input-features.
+multi-layer perceptron (MLP). The number of nodes in the layer 2x times the number of input-features. 
+See the tensorflow_nn.ipynb notebook for the data model and results.
 
 ## Boosted Decision Tree (BDT)
 Using scikit-learn, I define a ```RandomForestClassifier``` with AdaBoost defaults. The BDT is quite robust in 
-general and requires little tuning for model convergence. However, this data is not too large (much less than thousands) 
-and the variance of the prediction could be high. Using bagging should help.
+general and requires little tuning for model convergence. However, this data is not very large (much less than thousands) 
+and the variance of the prediction could be high. Using bagging should help. See the sklearn_adaboostclassier.ipynb 
+notebook for the data model and results.
 
 ## Bagged Random Forest (BARF)
 Using scikit-learn, I define a ```BaggingClassifier``` with the defaults. The advantage of BARF over BDT is that
 with the bootstrapping enabled, we can reduce the effects of high variance from non-bagging
-methods.
+methods. See the sklearn_baggingclassifier.ipynb notebook for the data model and results.
 
 # Results
 
