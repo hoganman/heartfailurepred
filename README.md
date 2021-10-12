@@ -14,16 +14,16 @@ Using TensorFlow version 2.4, I define a single, fully-connected ```tf.keras.lay
 multi-layer perceptron (MLP). The number of nodes in the layer 2x times the number of input-features.
 See the [tensorflow_nn.ipynb](https://github.com/hoganman/heartfailurepred/blob/main/tensorflow_nn.ipynb) notebook for the data model and results.
 
-## Boosted Decision Tree (BDT)
-Using scikit-learn, I define a ```RandomForestClassifier``` with AdaBoost defaults. The BDT is quite robust in
-general and requires little tuning for model convergence. However, this data is not very large (much less than thousands)
-and the variance of the prediction could be high. Using bagging should help. See the [sklearn_adaboostclassier.ipynb](https://github.com/hoganman/heartfailurepred/blob/main/sklearn_adaboostclassier.ipynb)
-notebook for the data model and results.
-
 ## Bagged Random Forest (BARF)
-Using scikit-learn, I define a ```BaggingClassifier``` with the defaults. The advantage of BARF over BDT is that
-with the bootstrapping enabled, we can reduce the effects of high variance from non-bagging
-methods. See the [sklearn_baggingclassifier.ipynb](https://github.com/hoganman/heartfailurepred/blob/main/sklearn_baggingclassifier.ipynb) notebook for the data model and results.
+Using scikit-learn, I define a ```BaggingClassifier``` with a random forest (NOT decision tree). 
+This is unorthodox, but interesting to try. See the 
+[sklearn_baggingclassifier.ipynb](https://github.com/hoganman/heartfailurepred/blob/main/sklearn_baggingclassifier.ipynb) notebook for the data model and results.
+
+## Boosted Decision Tree (BDT)
+Using scikit-learn, I define a ```DecisionTreeClassifier``` with AdaBoost. The BDT is quite robust in
+general and requires little tuning for model convergence. However, I observe that the specificity is lower than the
+bagging classifier. See the [sklearn_adaboostclassier.ipynb](https://github.com/hoganman/heartfailurepred/blob/main/sklearn_adaboostclassier.ipynb)
+notebook for the data model and results. 
 
 # Results
 
@@ -33,6 +33,6 @@ Percentages are rounded to the nearest integer with floor (ceil) on values less 
 
 | Model        | Accuracy (%) | Sensitivity (%) | Specificity (%) | F1 Score |
 |--------------|--------------|-----------------|-----------------|----------|
-| ANN          | 84           | 93              | 74              | 85       |
-| BARF         | 82           | 92              | 68              | 85       |
-| BDT          | 83           | 94              | 69              | 87       |
+| ANN          | 84           | 91              | 74              | 86       |
+| BARF         | 82           | 92              | 70              | 86       |
+| BDT          | 78           | 96              | 58              | 82       |
